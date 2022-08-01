@@ -1,0 +1,131 @@
+
+ <!-- Header-->
+ <header class="bg-transparent py-3">
+    <div class="container px-4 px-lg-2 my-3">
+        <div class="text-center text-white bg-dark" style="opacity: 90%;">
+            <h1 class="display-4 fw-bolder">Productos</h1>
+            <p class="lead fw-bolder text-white-50 mb-0" >¡Aqui podrás visualizar los productos que desees para comprarlos en la Veterinaria!</p>
+        </div>
+    </div>
+</header>
+<div class="container" >
+  <hr class="my-3">
+
+  <div *ngIf="productoModelGet">
+    <button class="btn btno text-white " type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'">
+      <i class="bi bi-plus-circle"></i>  Agregar Producto
+    </button>
+  </div>
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5" *ngFor="let prod of productoModelGet">
+                    <div class="card h-100">
+                        <!-- Sale badge-->
+                        <!--<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>-->
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://us.123rf.com/450wm/jirkaejc/jirkaejc1609/jirkaejc160900049/62236403-alimentos-secos-para-perros-o-gatos-en-un-taz%C3%B3n-de-fuente-en-la-vieja-mesa-de-madera-.jpg?ver=6" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{prod.nombreProducto}}</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                               Q.{{prod.precio}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'">
+                            <div class="text-center"><button class="btn btn-outline-dark mt-auto" ype="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                                aria-controls="offcanvasExample" (click)="getProductosId(prod._id)" >
+                                <i class="bi bi-pencil-square"></i> Editar</button></div>
+                            <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" (click)="deleteProductos(prod._id)" ><i class="bi bi-trash2-fill"></i>Eliminar</button></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputNombreProducto" class="form-label">Nombre Producto</label>
+              <input type="text" class="form-control" id="inputNombreProducto" name="nombreProducto" 
+              #nombreProducto="ngModel" [(ngModel)]="productoModelPost.nombreProducto">
+            </div>
+            <div class="mb-3">
+              <label for="inputPrecio" class="form-label">Precio</label>
+              <input type="text" class="form-control" id="inputPrecio" name="precio" 
+              #precio="ngModel" [(ngModel)]="productoModelPost.precio">
+            </div>
+            <div class="mb-3">
+              <label for="inputStock" class="form-label">Stock</label>
+              <input type="number" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+              [(ngModel)]="productoModelPost.stock">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postProductos()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- offCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+            <label for="inputNombreProducto" class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control" id="inputNombreProducto" name="nombreProducto" 
+            #nombreProducto="ngModel" [(ngModel)]="productoModelGetId.nombreProducto">
+          </div>
+          <div class="mb-3">
+            <label for="inputPrecio" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="inputPrecio" name="precio" 
+            #precio="ngModel" [(ngModel)]="productoModelGetId.precio">
+          </div>
+          <div class="mb-3">
+            <label for="inputStock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="inputStock" name="stock" #stock="ngModel"
+            [(ngModel)]="productoModelGetId.stock">
+          </div>
+    
+      <button type="button" class="btn btn-success"  (click)="putProductos()" data-bs-dismiss="offcanvas">Editar Producto</button>
+    </form>
+  </div>
+  </div>
+
+
+<br>
+<br>
+<div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5">
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-5 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-5 py-"><img class="rounded-circle mt-3" width="215px" src="https://i.ibb.co/N6RTg3d/user.png"><span class="font-weight-bold">{{user.nombre}}</span><span class="text-black-50">{{user.email}}</span></div>
+            
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Ajustes de Perfil</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="bi bi-person-fill"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="labels">Nombre</label>
+                                <input [(ngModel)]="user.nombre" name="nombre" type="text" class="form-control" placeholder="first name" value="">
+                    </div>
+                </div>
+            </div>
+                    <div class="col-md-6">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="bi bi-star"></i>
+                            <div class="form-outline flex-fill mb-0">
+                        <label class="labels">Mascota</label>
+                        <input [(ngModel)]="user.mascota" name="mascota" type="text" class="form-control" placeholder="Mascota" value="">
+                    </div>
+                </div></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="bi bi-envelope-fill"></i>
+                            <div class="form-outline flex-fill mb-0">
+                                <label class="labels">Email</label>
+                                <input [(ngModel)]="user.email" name="email" type="text" class="form-control" value="" placeholder="Email">
+                    </div>
+                </div>
+            </div>
+                   <!-- <div class="col-md-12">
+                        <label class="labels">Email</label>
+                        <input type="text" class="form-control" placeholder="enter email id" value="">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels">Tipo de Empresa</label>
+                        <input type="text" class="form-control" placeholder="enter email id" value="">
+                    </div>
+-->
+                </div>
+                <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="mt-5 text-center"><button (click)="updateUser()" class="btn btn-dark profile-button" type="button"><i class="bi1 bi-pencil-square"></i> Editar Perfil</button></div>
+                      </div>
+                      <div class="col">
+                        <div class="mt-5 text-center"><button type="button" class="btn btn-dark" routerLink="/login" (click)="deleteUsuarios(user._id)" (click)="logOut()"><i class="bi1 bi-trash2-fill"></i> Eliminar Perfil</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+          
+        </div>
+    </div>
+</div>
+<div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+    <!-- Copyright -->
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+    </div>

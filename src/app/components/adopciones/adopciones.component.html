@@ -1,0 +1,110 @@
+<div class="container">
+   
+  <header class="bg-transparent py-3">
+    <div class="container px-4 px-lg-2 my-3">
+        <div class="text-left text-black " >
+            <h1 class="display-4 fw-bolder">Registro de Adopcion</h1>
+            <p class="lead fw-bolder text-black-50 mb-0" >Este es un registro de la adopción de tu peludo, 
+              esto es algo que debes de presentar a la Veterinaria como registro de qué deseas adoptar a una mascota, esto lo puedes
+              hacer solamente mostrando esta parte al encargado o llevandolo impreso (clic derecho -> imprimir)
+            </p>
+        </div>
+    </div>
+</header>
+<hr class="my-3">
+  <br>
+    <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+        <i class="bi bi-plus-circle"></i> Llenar Formulario
+      </button>
+      <br>
+      <br>
+<div class="card" *ngFor="let adopt of adopcionModelGet">
+  <img class=" " src="https://i.ibb.co/828q46h/Peludos-Logo3.png"
+  alt="Card image cap" width="300px">
+    <h5 class="card-header text-center">ID Adopcion: {{adopt._id}}</h5>
+    <div class="card-body">
+
+      <h5 class="card-title">¿Por qué quieres una mascota?</h5>
+      <p class="card-text">{{adopt.pregunta1}}</p>
+      <h5 class="card-title">¿Para ti, en qué consiste tener una Mascota?</h5>
+      <p class="card-text">{{adopt.pregunta2}}</p>
+      <h5 class="card-title">¿Has tenido mascotas anteriormente?</h5>
+      <p class="card-text">{{adopt.pregunta3}}</p>
+      <h5 class="card-title">¿Al adoptar una mascota te comprometes a darle todos los cuidados necesarios?</h5>
+      <p class="card-text">{{adopt.pregunta4}}</p>
+      <h5 class="card-title">¿Cómo cuidarás de tu mascota?</h5>
+      <p class="card-text">{{adopt.pregunta5}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      ID Mascota a adoptar: {{adopt.idMascota}}
+   </div>
+  </div>
+</div>
+<br>
+<br>
+
+ <!-- Modal Agregar Adopcion -->
+ <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Llenar Formulario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputIdMascota" class="form-label">ID Mascota:</label>
+              <input type="text" class="form-control" id="inputIdMascota" name="idMascota" #idMascota="ngModel"
+              [(ngModel)]="adopcionModelPost.idMascota">
+            </div>
+            <div class="mb-3">
+              <label for="inputPregunta1" class="form-label">¿Por qué quieres una mascota?</label>
+              <input type="text" class="form-control" id="inputPregunta1" name="pregunta1" #pregunta1="ngModel"
+              [(ngModel)]="adopcionModelPost.pregunta1">
+            </div>
+            
+            <div class="mb-3">
+              <label for="inputPregunta2" class="form-label">¿Para ti, en qué consiste tener una Mascota?</label>
+              <input type="text" class="form-control" id="inputPregunta2" name="pregunta2" #pregunta2="ngModel"
+              [(ngModel)]="adopcionModelPost.pregunta2">
+            </div>
+            <div class="mb-3">
+                <label for="inputPregunta3" class="form-label">¿Has tenido mascotas anteriormente?</label>
+                <input type="text" class="form-control" id="inputPregunta3" name="pregunta3" #pregunta3="ngModel"
+                [(ngModel)]="adopcionModelPost.pregunta3">
+              </div>
+            <div class="mb-3">
+              <label for="inputPregunta4" class="form-label">¿Al adoptar una mascota te comprometes a darle todos los cuidados necesarios?</label>
+              <input type="text" class="form-control" id="inputPregunta4" name="pregunta4" #pregunta4="ngModel"
+              [(ngModel)]="adopcionModelPost.pregunta4">
+            </div>
+            <div class="mb-3">
+                <label for="inputPregunta5" class="form-label">¿Cómo cuidarás de tu mascota?</label>
+                <input type="text" class="form-control" id="inputPregunta5" name="pregunta5" #pregunta5="ngModel"
+                [(ngModel)]="adopcionModelPost.pregunta5">
+              </div>
+            <!--<div class="mb-3">
+              <label for="inputPassword" class="form-label">Password</label>
+              <input type="text" class="form-control" id="inputPassword" name="password" #password="ngModel"
+              [(ngModel)]="empresaModelPost.password">
+            </div>-->
+            
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="postAdopciones()">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  <br>
+  <br>
+  <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+  </div>

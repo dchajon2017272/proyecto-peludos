@@ -1,0 +1,135 @@
+
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+      .background-radial-gradient {
+        background-color:  #5271FF;
+      }
+      </style>
+
+
+<div class="container text-center text-lg-start my-4">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                      <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrarse</p>
+
+                  <form class="mx-1 mx-md-4" (ngSubmit)="registro()" #registerForm="ngForm">
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="bi bi-person-fill"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <span *ngIf="!nombre.valid && nombre.touched" class="requiredField">Campo Requerido</span>
+                        <input type="text" id="form3Example1c" autocomplete="off" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+                        [(ngModel)]="user.nombre"  placeholder="Ingresa tu Nombre" required/>
+
+                      </div>
+                    </div>
+
+                    
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="bi bi-envelope-fill"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <span *ngIf="!email.valid && email.touched" class="requiredField">Campo Requerido</span>
+                        <input type="email" id="form3Example3c" autocomplete="off" class="form-control" id="inputEmail" name="email" #email="ngModel"
+                        [(ngModel)]="user.email"  placeholder="Ingresa tu Email" required/>
+                        
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="bi bi-phone-fill"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <span *ngIf="!telefono.valid && telefono.touched" class="requiredField">Campo Requerido</span>
+                          <input type="text" id="form3Example1c" autocomplete="off" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+                          [(ngModel)]="user.telefono"  placeholder="Ingresa tu Número de Telefono" required/>
+                           
+                          </div>
+                        </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="bi bi-key-fill"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <span *ngIf="!password.valid && password.touched" class="requiredField">Campo Requerido</span>
+                        <input type="password" id="form3Example4c" autocomplete="off" class="form-control" id="inputPassword" name="password" #password="ngModel"
+                        [(ngModel)]="user.password" placeholder="Ingresa tu Contraseña" required/>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="bi bi-clipboard-heart-fill"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <span *ngIf="!mascota.valid && mascota.touched" class="requiredField">Campo Requerido</span>
+                        <input type="mascota" id="form3Example4c" autocomplete="off" class="form-control" id="inputMascota" name="mascota" #mascota="ngModel"
+                        [(ngModel)]="user.mascota" placeholder="Ingresa tu Mascota" required/>
+                      </div>
+                    </div>
+  
+                    <!--<div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                       <input type="email" id="form3Example3c" class="form-control"  placeholder="Ingresa tu Email" required/>
+                       <select class="form-select" aria-label="Default select example" id="form3Example3c" 
+                        id="inputTipoEmpresa" name="_tipoEmpresa" #tipoEmpresa="ngModel" [(ngModel)]="user.tipoEmpresa" required>
+                          <option value="Restaurante">Restaurante</option>
+                          <option value="Veterinaria">Veterinaria</option>
+                          <option value="Banco">Banco</option>
+                          <option value="Distribuidora">Distribuidora</option>
+                          <option value="Supermercado">Supermercado</option>
+                          <option value="Técnica">Técnica</option>
+                          <option value="Mécanica Automotriz">Mécanica Automotriz</option>
+                          <option value="Electrica">Electrica</option>
+                          <option value="Informática">Informática</option>
+                          <option value="Diseñadora">Diseñadora</option>
+                          <option value="Otro">Otro</option>
+                          
+                        </select>
+                        <label class="form-label" for="form3Example3c">Tipo de Empresa</label>
+                      </div>
+                    </div>-->
+  
+                    <div class="form-check d-flex justify-content-center mb-5">
+                     
+                      <input ngModel name = "terms" class="form-check-input me-2" type="checkbox" for="form2Example3c" required/>
+                      <label class="form-check-label" for="form2Example3">
+                        Estoy de acuerdo con todos los <a href="#!">Terminos de Servicio</a>
+                      </label>
+                    </div>
+  
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="submit" class="btn btn-dark" [disabled]="!registerForm.form.valid" >Registrarse</button>
+                      
+                    </div>
+                    
+                  </form>
+                </div>
+            </div>
+        </div>
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                </div>
+                
+              </div>
+              
+            </div>
+          </div>
+    
+      </div>
+    </div>
+    
+  </section>
+  <br>
+  
+  <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+    <!-- Copyright -->
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+    </div>

@@ -1,0 +1,28 @@
+<div class="card text-left m-5" *ngIf="load">
+    <div class="card-header">
+      Datos del Cliente: 
+    </div>
+    <div class="card-body">
+        <div class="text-center">
+      <h1 class="card-title" style="font-size: 80px ;">{{date.nombre}}</h1>
+      <p class="card-text">Telefono: {{date.telefono}}</p>
+      <p class="card-text">Correo Electrónico: {{date.email}}</p>
+      <p class="card-text">Mascota: {{date.mascota}}</p>
+      <p class="card-text">Mensaje: {{date.mensaje}}</p>
+      <p class="card-text">Fecha: {{date.fecha}}</p>
+      <p class="card-text">Hora: {{date.hora}}</p>
+    </div>
+      <hr>
+
+      <p class="card-text fw-bolder">Motivo de su Cita</p>
+      <p class="card-text">{{date.pregunta1}}</p>
+      <p class="card-text fw-bolder">Datos de la mascota (Nombre, edad, raza, animal, etc.)</p>
+      <p class="card-text">{{date.pregunta2}}</p>
+
+
+      
+    </div>
+    <div class="card-footer text-muted">
+       ID Cita: {{ date._id }}
+    </div>
+  </div>

@@ -1,0 +1,139 @@
+<div class="container">
+    <!-- Button Abrir Modal Agregar Producto -->
+    <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+      <i class="bi bi-plus-circle"></i> Agregar Usuario
+    </button>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 col-md-4" *ngFor="let user of usuarioModelGet">
+        <div class="card text-center mb-3">
+          <div class="card-header ">
+            {{ user._id }}
+          </div>
+          <img src="https://i.ibb.co/N6RTg3d/user.png" class="hola" width="200px" height="200px" alt="Usuarios" >
+          <div class="card-body">
+            <h5 class="card-title">{{user.nombre}} {{user.apellido}}</h5>
+            
+            <p class="card-text">
+              Email: {{user.email}}
+            </p>
+            <p class="card-text">
+                Número de Telefono: {{user.telefono}}
+              </p>
+            <button type="button" class="btn btn-dark" (click)="deleteUsuarios(user._id)" ><i class="bi bi-trash2-fill"></i>Eliminar</button>
+            <button class="btno btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getUsuarioId(user._id)">
+              <i class="bi bi-pencil-square"></i> Editar
+              </button>
+              <!--<button type="button" class="btn btn-danger" [routerLink]="['/verEmpresas',empr._id]">Ver</button>-->
+          </div>
+         
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  
+  <!-- Modal Agregar Empresa -->
+  <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+              [(ngModel)]="usuarioModelPost.nombre">
+            </div>
+            
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label">Email</label>
+              <input type="text" class="form-control" id="inputEmail" name="email" #email="ngModel"
+              [(ngModel)]="usuarioModelPost.email">
+            </div>
+            <div class="mb-3">
+                <label for="inputTelefono" class="form-label">Telefono</label>
+                <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+                [(ngModel)]="usuarioModelPost.telefono">
+              </div>
+            <div class="mb-3">
+              <label for="inputPassword" class="form-label">Password</label>
+              <input type="text" class="form-control" id="inputPassword" name="password" #password="ngModel"
+              [(ngModel)]="usuarioModelPost.password">
+            </div>
+            <div class="mb-3">
+              <label for="inputMascota" class="form-label">Nombre Mascota</label>
+              <input type="text" class="form-control" id="inputMascota" name="mascota" #mascota="ngModel"
+              [(ngModel)]="usuarioModelPost.mascota">
+            </div>
+            <!--<div class="mb-3">
+              <label for="inputPassword" class="form-label">Password</label>
+              <input type="text" class="form-control" id="inputPassword" name="password" #password="ngModel"
+              [(ngModel)]="empresaModelPost.password">
+            </div>-->
+            
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postUsuarios()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- offCanvas Editar Producto -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuario</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        
+        <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="usuarioModelGetId.nombre">
+          </div>
+          
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="text" class="form-control" id="inputEmail" name="email" #email="ngModel"
+            [(ngModel)]="usuarioModelGetId.email">
+          </div>
+          <div class="mb-3">
+            <label for="inputTelefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+            [(ngModel)]="usuarioModelGetId.telefono">
+          </div>
+          <div class="mb-3">
+            <label for="inputRol" class="form-label">Rol</label>
+            <input type="text" class="form-control" id="inputRol" name="rol" #rol="ngModel"
+            [(ngModel)]="usuarioModelGetId.rol">
+          </div>
+          <div class="mb-3">
+            <label for="inputMascota" class="form-label">Nombre Mascota</label>
+            <input type="text" class="form-control" id="inputMascota" name="mascota" #mascota="ngModel"
+            [(ngModel)]="usuarioModelGetId.mascota">
+          </div>
+      <button type="button" class="btn btn-dark"  (click)="putUsuarios()" data-bs-dismiss="offcanvas">Editar Usuario</button>
+  
+      </form>
+    </div>
+    </div>
+  <br>
+  <br>
+  <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 bg-dark">
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+  </div>
