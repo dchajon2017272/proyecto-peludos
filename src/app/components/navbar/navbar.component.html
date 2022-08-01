@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-ligth bg-transparent">
+    <div class="container px-5">
+        <img src="https://i.ibb.co/yyN3b2D/Peludos-Logo3.png" class="logo img-fluid" width="80px" height="10px" alt="...">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="navbar nav-link text-black" routerLink="pagina-inicio"><i class="bi bi-house"></i>Inicio</a></li>
+                <li class="nav-item"><a class="navbar nav-link text-black" routerLink="usuarios"><i class="bi bi-person-circle"></i>Usuarios</a></li>
+
+                <li class="nav-item"><a class="navbar nav-link text-black text-black" routerLink="productos"> <i class="bi bi-handbag"></i>Productos</a></li>
+                <li class="nav-item"><a class="navbar nav-link text-black" routerLink="mascotas"><i class="bi bi-clipboard-heart-fill"></i>Adoptar</a></li>
+                <li class="nav-item"><a class="navbar nav-link text-black" routerLink="citas" ><i class="bi bi-calendar-date"></i>Citas</a></li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Más</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                        <li><a class="dropdown-item" routerLink="/actualizar-usuario">Editar Perfil</a></li>
+                        <li><a (click)="logOut()" class="dropdown-item" routerLink="/login">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted"  routerLink="/actualizar-usuario" *ngIf="_usuarioService.obtenerIdentidad()" >
+                      {{_usuarioService.obtenerIdentidad().nombre}}<i class="bi bi-file-person-fill"></i></a>
+                  </li>
+            </ul>
+        </div>
+    </div>
+</nav>

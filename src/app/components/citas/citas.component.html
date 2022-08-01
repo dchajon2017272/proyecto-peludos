@@ -1,0 +1,161 @@
+<div class="container my-5">
+
+<header class="bg-transparent py-0">
+    <div class="container px-4 px-lg-2 my-3">
+        <div class="text-left text-black " >
+            <h1 class="display-4 fw-bolder">Citas</h1>
+            <p class="lead fw-bolder text-black-50 mb-0" >En esta sección podrás programar tu cita para un mejor manejo de información y facil realización de la misma.</p>
+        </div>
+    </div>
+</header>
+<hr class="my-3">
+    <br>
+    <div class="container" >
+     
+    <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto"  >
+      <i class="bi bi-plus-circle"></i> Hacer Cita
+      </button>
+      <br>
+      <br>
+      <div class="row">
+        <div class="container-fluid col-12 col-md-4" *ngFor="let date of citaModelGet ">
+            <div class="row">
+                  <div class="card text-center mb-3">
+                    <div class="card-header ">
+                      {{ date._id }}
+                    </div>
+                    <br>
+                    <img src="https://i.ibb.co/5kVXcmv/Cita.png" class="hola" width="200px" height="200px" alt="Citas" >
+                    <div class="card-body">
+                      <h5 class="card-title">Nombre Cliente: {{date.nombre}} </h5>
+                      <p class="card-text ">
+                        Mascota: {{date.mascota}}
+                      </p>
+                      <p class="card-text">
+                        Descripcion De Cita: {{date.mensaje}}
+                      </p>
+                      <p class="card-text">
+                        Fecha: {{date.fecha}}
+                      </p>
+                      <p class="card-text">
+                        Hora: {{date.hora}}
+                      </p>
+                     
+                        
+                        <button type="button" class="btn btn-dark" (click)="deleteCitas(date._id)" ><i class="bi bi-trash2-fill"></i>Cancelar Cita</button>
+                        <button type="button" class="btn btn-dark" [routerLink]="['/verCitas',date._id]">Ver Cita</button>
+
+                    </div>
+                  
+                  
+                </div>
+                
+              </div>
+            </div>
+              
+</div>
+    </div>
+
+</div>
+    <!-- Modal Agregar Reservacion -->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agendar Cita</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputNombre" class="form-label">Nombre del Cliente</label>
+              <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+              [(ngModel)]="citaModelPost.nombre">
+            </div>
+            <div class="mb-3">
+                <label for="inputTelefono" class="form-label">Numero de Telefono</label>
+                <input type="text" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+                [(ngModel)]="citaModelPost.telefono">
+              </div>
+              <div class="mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="text" class="form-control" id="inputEmail" name="email" #email="ngModel"
+                [(ngModel)]="citaModelPost.email">
+              </div>
+              <div class="mb-3">
+                <label for="inputMascota" class="form-label">Nombre Mascota</label>
+                <input type="text" class="form-control" id="inputMascota" name="mascota" #mascota="ngModel"
+                [(ngModel)]="citaModelPost.mascota">
+              </div>
+              <div class="mb-3">
+                <label for="inputMensaje" class="form-label">Mensaje</label>
+                <input type="text" class="form-control" id="inputMensaje" name="mensaje" #mensaje="ngModel"
+                [(ngModel)]="citaModelPost.mensaje">
+              </div>
+              <div class="mb-3">
+                <label for="inputFecha" class="form-label">Fecha</label>
+                <input type="text" class="form-control" id="inputFecha" name="fecha" #fecha="ngModel"
+                [(ngModel)]="citaModelPost.fecha">
+              </div>
+              <div class="mb-3">
+                <label for="inputHora" class="form-label">Hora</label>
+                <input type="text" class="form-control" id="inputHora" name="hora" #hora="ngModel"
+                [(ngModel)]="citaModelPost.hora">
+              </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalSiguiente"  >
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <!-- Modal Siguiente -->
+<div class="modal fade" id="modalSiguiente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agendar Cita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputPregunta1" class="form-label">Motivo de su Cita</label>
+            <input type="text" class="form-control" id="inputPregunta1" name="pregunta1" #pregunta1="ngModel"
+            [(ngModel)]="citaModelPost.pregunta1">
+          </div>
+          <div class="mb-3">
+            <label for="inputPregunta2" class="form-label">Datos de la mascota (Nombre, edad, raza, animal, etc.)</label>
+            <input type="text" class="form-control" id="inputPregunta2" name="pregunta2" #pregunta2="ngModel"
+            [(ngModel)]="citaModelPost.pregunta2">
+          </div>
+        
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postCitas()">Agendar Cita</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+
+    <br>
+    <br>
+    <br>
+
+        <div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5 ">
+            <div class="asado text-white mb-3 mb-md-0 ">
+              Copyright © 2022. Todos los derechos reservados por el grupo 3.
+            </div>
+            </div>

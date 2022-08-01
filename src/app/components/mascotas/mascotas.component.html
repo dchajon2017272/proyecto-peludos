@@ -1,0 +1,133 @@
+<div class="container my-5">
+    
+    <header class="bg-transparent py-3">
+        <div class="container px-4 px-lg-2 my-3">
+            <div class="text-left text-black " >
+                <h1 class="display-4 fw-bolder">Adopta!</h1>
+                <p class="lead fw-bolder text-black-50 mb-0" >Aqui encontraras a nuestros peludos que se encuentran esperando por una familia.</p>
+            </div>
+        </div>
+    </header>
+  <hr class="my-3">
+<div *ngIf="mascotaModelGet">
+  <button class="btn btn-dark " type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'">
+    <i class="bi bi-plus-circle"></i>  Agregar Mascota
+  </button>
+</div>
+<br>
+<br>
+  
+
+        <div class="row" >
+          <div class="col-md-4" *ngFor="let pet of mascotaModelGet">
+            <div class="card mb-2">
+                <div class="card-header fw-bolder ">
+                    ID Mascota: {{ pet._id }}
+                  </div>
+              <img class="card-img-top" src="https://www.doogweb.es/wp-content/uploads/2018/01/Kiwoko-nombre.jpg"
+                   alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-title" style="font-size: 40px;">{{pet.nombreMascota}}</h4>
+                <p class="card-text">{{pet.descripcion}}</p>
+                <p class="card-text">Tipo de Animal: {{pet.tipo}}</p>
+                
+              </div>
+              <div >
+              <a class="btn text-white fw-bolder" style="background-color:#5271FF ;" routerLink="/adopciones">Adoptar</a>
+                <button type="button" class="btn btn-dark" (click)="deleteMascotas(pet._id)" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'"><i class="bi bi-trash2-fill"></i>Eliminar</button>
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getMascotasId(pet._id)" *ngIf="_usuarioService.obtenerIdentidad().rol=='SuperAdmin'">
+              <i class="bi bi-pencil-square" ></i> Editar </button>
+            </div>
+            </div>
+          </div>
+
+          
+
+        </div>
+
+
+</div>
+
+
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Mascota</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputNombreMascota" class="form-label">Nombre Mascota</label>
+              <input type="text" class="form-control" id="inputNombreMascota" name="nombreMascota" 
+              #nombreMascota="ngModel" [(ngModel)]="mascotaModelPost.nombreMascota">
+            </div>
+            <div class="mb-3">
+              <label for="inputDescripcion" class="form-label">Descripcion</label>
+              <input type="text" class="form-control" id="inputDescripcion" name="descripcion" 
+              #descripcion="ngModel" [(ngModel)]="mascotaModelPost.descripcion">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="form3Example3c">Tipo</label>
+                <select class="form-select" aria-label="Default select example" id="form3Example3c" 
+                 id="inputTipo" name="tipo" #tipo="ngModel" [(ngModel)]="mascotaModelPost.tipo" required>
+                 <option value="Perro">Perro</option>
+                 <option value="Gato">Gato</option>
+                 <option value="Conejo">Conejo</option>
+               </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postMascotas()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- offCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Mascota</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form>
+        <div class="mb-3">
+            <label for="inputNombreMascota" class="form-label">Nombre Mascota</label>
+            <input type="text" class="form-control" id="inputNombreMascota" name="nombreMascota" 
+            #nombreMascota="ngModel" [(ngModel)]="mascotaModelGetId.nombreMascota">
+          </div>
+          <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripcion</label>
+            <input type="text" class="form-control" id="inputDescripcion" name="descripcion" 
+            #descripcion="ngModel" [(ngModel)]="mascotaModelGetId.descripcion">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="form3Example3c">Tipo</label>
+            <select class="form-select" aria-label="Default select example" id="form3Example3c" 
+             id="inputTipo" name="tipo" #tipo="ngModel" [(ngModel)]="mascotaModelGetId.tipo" required>
+             <option value="Perro">Perro</option>
+             <option value="Gato">Gato</option>
+             <option value="Conejo">Conejo</option>
+           </select>
+          </div>
+
+         
+    
+      <button type="button" class="btn btn-success"  (click)="putMascotas()" data-bs-dismiss="offcanvas">Editar Mascota</button>
+    </form>
+  </div>
+  </div>
+
+
+<br>
+<br>
+<div class="footer d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-8 px-5 px-xl-5">
+    <div class="asado text-white mb-3 mb-md-0 ">
+      Copyright © 2022. Todos los derechos reservados por el grupo 3.
+    </div>
+</div>
