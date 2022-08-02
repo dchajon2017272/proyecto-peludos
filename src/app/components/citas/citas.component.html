@@ -102,7 +102,23 @@
                 <input type="text" class="form-control" id="inputHora" name="hora" #hora="ngModel"
                 [(ngModel)]="citaModelPost.hora">
               </div>
-            
+              <div class="mb-3">
+                <label class="form-label" for="form3Example3c">Hora</label>
+                <select class="form-select" aria-label="Default select example" id="form3Example3c" 
+                 id="inputHora" name="hora" #hora="ngModel" [(ngModel)]="citaModelPost.hora" required>
+                 <option value="7AM - 8AM">7AM - 8AM</option>
+                 <option value="8AM - 9AM">8AM - 9AM</option>
+                 <option value="9AM - 10AM">9AM - 10AM</option>
+                 <option value="10AM - 11AM">10AM - 11AM</option>
+                 <option value="11AM - 12PM">11AM - 12PM</option>
+                 <option value="12PM - 1PM">12PM - 1PM</option>
+                 <option value="1PM - 2PM">1PM - 2PM</option>
+                 <option value="2PM - 3PM">2PM - 3PM</option>
+                 <option value="3PM - 4PM">3PM - 4PM</option>
+                 <option value="4PM - 5PM">4PM - 5PM</option>
+
+               </select>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
