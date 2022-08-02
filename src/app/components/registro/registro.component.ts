@@ -42,7 +42,7 @@ export class RegistroComponent implements OnInit {
         //alert('Usuario creado correctamente, ya puedes iniciar sesión con el correo: '+ response.usuario.email)
         localStorage.setItem("identidad", JSON.stringify(response.usuario))
 
-        this._router.navigate(['/pagina-inicio']);
+        this._router.navigate(['/login']);
       },
       error: (error)=>alert(error.error.mensaje),
       

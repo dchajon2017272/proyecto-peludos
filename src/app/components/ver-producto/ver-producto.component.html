@@ -1,0 +1,58 @@
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5" *ngIf="load">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://walmartcr.vtexassets.com/arquivos/ids/156746/ALIMENTO-SUPER-GATO-GATO-1500GR-ALIMENTO-SUPER-GATO-GATO-1500GR-5-26824.jpg?v=637528604714200000" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">ID Producto: {{ product._id }}</div>
+                <h1 class="display-5 fw-bolder">{{ product.nombreProducto }}</h1>
+                <div class="fs-5 mb-5">
+                    <span>Q.{{product.precio}}</span>
+                </div>
+                <p class="lead">Estos productos son solo de muestra, podrás realizar su compra cuando llegues a la Veterinaria, esto es así porque aún no contamos con servicio a domicilio como tal, así que nos sirve para un mejor funcionamiento.</p>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="{{product.stock}}" style="max-width: 3rem" />
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Related items section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4">Productos Relacionados</h2>
+
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let prod of productoModelGet">
+                <div class="card h-100">
+                    <!-- Sale badge-->
+                    <!--<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>-->
+                    <!-- Product image-->
+                    <img class="card-img-top" src="https://us.123rf.com/450wm/jirkaejc/jirkaejc1609/jirkaejc160900049/62236403-alimentos-secos-para-perros-o-gatos-en-un-taz%C3%B3n-de-fuente-en-la-vieja-mesa-de-madera-.jpg?ver=6" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{prod.nombreProducto}}</h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                            </div>
+                            <!-- Product price-->
+                           Q.{{prod.precio}}
+                        </div>
+                        <div class="text-center"><button type="button" class="btn btn-outline-dark mt-auto" [routerLink]="['/verProductos',prod._id]" >Ver Producto</button></div>
+
+                    </div>
+                    <!-- Product actions-->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

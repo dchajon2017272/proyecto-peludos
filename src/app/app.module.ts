@@ -17,6 +17,8 @@ import { AdopcionesComponent } from './components/adopciones/adopciones.componen
 import { CitasComponent } from './components/citas/citas.component';
 import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
 import { VerCitaComponent } from './components/ver-cita/ver-cita.component';
+import { VerProductoComponent } from './components/ver-producto/ver-producto.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { VerCitaComponent } from './components/ver-cita/ver-cita.component';
     AdopcionesComponent,
     CitasComponent,
     ActualizarUsuarioComponent,
-    VerCitaComponent
+    VerCitaComponent,
+    VerProductoComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

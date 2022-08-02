@@ -11,6 +11,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
 import { VerCitaComponent } from './components/ver-cita/ver-cita.component';
+import { VerProductoComponent } from './components/ver-producto/ver-producto.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'citas', component: CitasComponent },
   { path: 'actualizar-usuario',component: ActualizarUsuarioComponent},
   { path: 'verCitas/:idCita', component: VerCitaComponent },
+  { path: 'verProductos/:idProducto', component: VerProductoComponent },
 
   
 ];
